@@ -31,14 +31,14 @@
             <div class="page-header">
                 <h1>New song</h1>
             </div>
-            <form>
+            <form action="<?php echo $app->urlFor('saveSong') ?>" method="post">
 			  <div class="form-group">
 			    <label for="name">Name</label>
-			    <input type="text" class="form-control" id="name" placeholder="Enter song name">
+			    <input type="text" class="form-control" id="name" name="name" placeholder="Enter song name">
 			  </div>
 			  <div class="form-group">
 			    <label for="artist">Artist</label>
-			    <input type="text" class="form-control" id="artist" placeholder="Artist's name">
+			    <input type="text" class="form-control" id="artist" name="artist" placeholder="Artist's name">
 			  </div>
 			  <div class="form-group">
 			    <label for="song">Song's File</label>

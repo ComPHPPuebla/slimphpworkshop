@@ -32,7 +32,7 @@
                 <h1>Songs</h1>
 	        </div>
 	        <p>
-                <a href="new.html" class="btn btn-success" role="button">
+                <a href="<?php echo $app->urlFor('newSong') ?>" class="btn btn-success" role="button">
                     <span class="glyphicon glyphicon-plus"></span>
                     New
                 </a>
@@ -46,20 +46,15 @@
 	                </tr>
                 </thead>
                 <tbody>
+					<?php foreach ($songs as $song) : ?>
                     <tr>
                         <td>
-                            <a href="#">Las flores</a>
+                            <a href="#"><?php echo $song['name'] ?></a>
                         </td>
-                        <td>Café Tacvba</td>
+                        <td><?php echo $song['artist'] ?></td>
                         <td><a href="#">Edit</a></td>
                     </tr>
-                    <tr>
-                        <td>
-                            <a href="show.html">Scar Tissue</a>
-                        </td>
-                        <td>Red Hot Chilli Peppers</td>
-                        <td><a href="#">Edit</a></td>
-                    </tr>
+                    <?php endforeach ?>
                 </tbody>
             </table>
         </div>

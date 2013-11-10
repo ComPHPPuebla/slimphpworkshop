@@ -1,0 +1,38 @@
+{
+    "name": "Musci PHPlayer",
+    "apiVersion": "1.0",
+    "baseUrl": "http://slimphp.dev/api",
+    "description": "Music PHPlayer API",
+    "operations": {
+        "getSongsList": {
+            "httpMethod": "GET",
+            "uri": "songs",
+            "summary": "Retrieve the full list of songs.",
+            "responseClass": "songsOutput"
+        },
+        "saveSong": {
+            "httpMethod": "POST",
+            "uri": "songs",
+            "summary": "Save a new song.",
+            "responseClass": "songsOutput",
+            "parameters": {
+                "name": {
+                    "location": "postField",
+                    "type": "string"
+                },
+                "artist": {
+                    "location": "postField",
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "models": {
+        "songsOutput": {
+            "type": "object",
+            "additionalProperties": {
+                "location": "json"
+            }
+        }
+    }
+}
