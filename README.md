@@ -16,12 +16,12 @@ Para probar el ejemplo de este repositorio debes seguir los siguientes pasos:
 
 1. Importar la base de datos (en la máquina virtual)
 
-    mysql -u root -p -D slimphp < sql/schema.sql
+    `mysql -u root -p -D slimphp < sql/schema.sql`
 
 2. Modificar el virtual host que actualmente apunta a `/var/www` para que apunte a la carpeta
 `public` de tu proyecto (en la máquina virtual)
 
-    <VirtualHost *:80>
+    ```<VirtualHost *:80>
       ServerName slimphp.dev
 
       ## Vhost docroot
@@ -42,15 +42,15 @@ Para probar el ejemplo de este repositorio debes seguir los siguientes pasos:
       ServerSignature Off
       CustomLog /var/log/apache2/slimphp.dev_access.log combined
 
-    </VirtualHost>
+    </VirtualHost>```
 
 3. Instalar las dependencias con Composer (en la máquina virtual)
 
-    composer install
+    `composer install`
 
 4. Modificar tu archivo `/etc/hosts` (en tu máquina real)
 
-    192.168.56.101 slimphp.dev
+    `192.168.56.101 slimphp.dev`
 
 5. Verifica tu instalación (en tu máquina real)
 
