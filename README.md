@@ -21,7 +21,8 @@ Para probar el ejemplo de este repositorio debes seguir los siguientes pasos:
 2. Modificar el virtual host que actualmente apunta a `/var/www` para que apunte a la carpeta
 `public` de tu proyecto (en la máquina virtual)
 
-    ```<VirtualHost *:80>
+    ```apache
+    <VirtualHost *:80>
       ServerName slimphp.dev
 
       ## Vhost docroot
@@ -42,7 +43,8 @@ Para probar el ejemplo de este repositorio debes seguir los siguientes pasos:
       ServerSignature Off
       CustomLog /var/log/apache2/slimphp.dev_access.log combined
 
-    </VirtualHost>```
+    </VirtualHost>
+    ```
 
 3. Instalar las dependencias con Composer (en la máquina virtual)
 
