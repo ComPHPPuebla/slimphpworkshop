@@ -19,7 +19,8 @@ Para probar el ejemplo de este repositorio debes seguir los siguientes pasos:
     `mysql -u root -p -D slimphp < sql/schema.sql`
 
 2. Modificar el virtual host que actualmente apunta a `/var/www` para que apunte a la carpeta
-`public` de tu proyecto (en la máquina virtual)
+`public` de tu proyecto (en la máquina virtual). La definición del host virtual está en el archivo
+`/etc/apache2/sites-available/25-slimphp.conf`
 
     ```apache
     <VirtualHost *:80>
@@ -45,6 +46,10 @@ Para probar el ejemplo de este repositorio debes seguir los siguientes pasos:
 
     </VirtualHost>
     ```
+
+   Y recargar las configuraciones de Apache
+
+   `sudo service apache2 reload`
 
 3. Instalar las dependencias con Composer (en la máquina virtual)
 
