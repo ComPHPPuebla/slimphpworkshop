@@ -49,7 +49,9 @@
 					<?php foreach ($songs as $song) : ?>
                     <tr>
                         <td>
-                            <a href="#"><?php echo $song['name'] ?></a>
+                            <a href="<?php echo $app->urlFor('showSong', ['id' => $song['song_id']])  ?>">
+                                <?php echo $song['name'] ?>
+                            </a>
                         </td>
                         <td><?php echo $song['artist'] ?></td>
                         <td>
