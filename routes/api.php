@@ -11,12 +11,25 @@ $app->get('/api/songs', function() use ($app) {
     echo json_encode($songs, JSON_PRETTY_PRINT);
 });
 
+$app->get('/api/songs/:id/file', function($id) use ($app) {
+    $statement = $app->connection->prepare('SELECT * FROM song WHERE song_id = :songId');
+    $statement->bindParam('songId', $id);
+    $statement->execute();
+
+    $song = $statement->fetch();
+
+    $app->response()->headers->set('content-type', 'audio/mpeg');
+
+    echo file_get_contents("uploads/{$song['file_path']}");
+});
+
 $app->get('/api/songs/:id', function($id) use ($app) {
     $statement = $app->connection->prepare('SELECT * FROM song WHERE song_id = :songId');
     $statement->bindParam('songId', $id);
     $statement->execute();
 
     $song = $statement->fetch();
+    $song['file_path'] = "{$app->request()->getUrl()}/api/songs/{$id}/file";
 
     echo json_encode($song, JSON_PRETTY_PRINT);
 });

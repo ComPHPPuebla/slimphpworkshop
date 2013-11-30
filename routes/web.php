@@ -26,9 +26,11 @@ $app->post('/save', function() use ($app) {
     $app->redirect($app->urlFor('songsList'));
 })->name('saveSong');
 
-$app->get('/show', function() use ($app) {
-    $app->render('show.html');
-});
+$app->get('/show/:id', function($id) use ($app) {
+    $song = $app->client->getSong(['songId' => $id]);
+
+    $app->render('show.html.php', ['song' => $song]);
+})->name('showSong');
 
 $app->get('/edit/:id', function($id) use ($app) {
     $song = $app->client->getSong(['songId' => $id]);
@@ -53,7 +55,3 @@ $app->post('/update/:id', function($id) use ($app) {
 
     $app->redirect($app->urlFor('songsList'));
 })->name('updateSong');
-
-$app->get('/show', function() use ($app) {
-    $app->render('show.html');
-});

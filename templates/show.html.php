@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Welcome to Music PHPlayer</title>
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/sticky.css">
+    <link rel="stylesheet" href="/styles/sticky.css">
 </head>
 <body>
     <div id="wrap">
@@ -29,7 +29,7 @@
 
         <div class="container">
             <div class="page-header">
-                <h1>Scar Tissue</h1>
+                <h1><?php echo $song['name'] ?></h1>
             </div>
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -38,9 +38,9 @@
 		                <img class="media-object" width="120" height="120" src="https://1.gravatar.com/avatar/628c00ce4eb4fc595256048dfb9fcfd8?d=https%3A%2F%2Fidenticons.github.com%2F16726ad93e762e7f706daef979ca1c48.png&r=x&s=440">
 					  </a>
 					  <div class="media-body">
-					    <h2 class="media-heading">Red Hot Chilli Peppers</h2>
+					    <h2 class="media-heading"><?php echo $song['artist'] ?></h2>
 					    <p class="lead">Listen now</p>
-					    <audio src="#" controls></audio>
+					    <audio src="<?php echo $song['file_path'] ?>" controls></audio>
 					  </div>
 					</div>
 				</div>
