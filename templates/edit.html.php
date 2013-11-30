@@ -29,16 +29,28 @@
 
         <div class="container">
             <div class="page-header">
-                <h1>New song</h1>
+                <h1>Edit song</h1>
             </div>
-            <form action="<?php echo $app->urlFor('saveSong') ?>" method="post" enctype="multipart/form-data">
+            <form action="<?php echo $app->urlFor('updateSong', ['id' => $song['song_id']]) ?>"
+                  method="post"
+                  enctype="multipart/form-data">
 			  <div class="form-group">
 			    <label for="name">Name</label>
-			    <input type="text" class="form-control" id="name" name="name" placeholder="Enter song name">
+			    <input type="text"
+			           class="form-control"
+			           id="name"
+			           name="name"
+			           placeholder="Enter song name"
+			           value="<?php echo $song['name'] ?>">
 			  </div>
 			  <div class="form-group">
 			    <label for="artist">Artist</label>
-			    <input type="text" class="form-control" id="artist" name="artist" placeholder="Artist's name">
+			    <input type="text"
+			           class="form-control"
+			           id="artist"
+			           name="artist"
+			           placeholder="Artist's name"
+			           value="<?php echo $song['artist'] ?>">
 			  </div>
 			  <div class="form-group">
 			    <label for="song">Song's File</label>

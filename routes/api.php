@@ -1,4 +1,6 @@
 <?php
+use ComPHPPuebla\MultiPartDataParser;
+
 require 'resources/api.php';
 
 $app->get('/api/songs', function() use ($app) {
@@ -7,6 +9,16 @@ $app->get('/api/songs', function() use ($app) {
     $songs = $statement->fetchAll();
 
     echo json_encode($songs, JSON_PRETTY_PRINT);
+});
+
+$app->get('/api/songs/:id', function($id) use ($app) {
+    $statement = $app->connection->prepare('SELECT * FROM song WHERE song_id = :songId');
+    $statement->bindParam('songId', $id);
+    $statement->execute();
+
+    $song = $statement->fetch();
+
+    echo json_encode($song, JSON_PRETTY_PRINT);
 });
 
 $app->post('/api/songs', function() use ($app) {
@@ -34,6 +46,24 @@ QUERY;
         'artist' => $artist,
         'file_path' => $path,
     ];
+
+    echo json_encode($song, JSON_PRETTY_PRINT);
+});
+
+$app->put('/api/songs/:id', function($id) use ($app) {
+    $parser = new MultiPartDataParser('uploads');
+    $song = $parser->parse($app->request()->getBody());
+
+    $assignments = [];
+    foreach($song as $key => $value) {
+        $assignments[] = "$key = :$key";
+    }
+
+    $sql = sprintf('UPDATE song SET %s WHERE song_id = :songId', implode(', ', $assignments));
+    $statement = $app->connection->prepare($sql);
+
+    $song['songId'] = $id;
+    $statement->execute($song);
 
     echo json_encode($song, JSON_PRETTY_PRINT);
 });
