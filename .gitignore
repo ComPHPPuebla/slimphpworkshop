@@ -1,3 +1,10 @@
+# IDE
 .settings/
 .buildpath
 .project
+
+# Composer
+vendor/
+
+# Configuration
+config/connection.php

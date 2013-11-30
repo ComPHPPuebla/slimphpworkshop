@@ -1,0 +1,6 @@
+<?php
+return [
+    'dsn' => 'mysql:host=localhost;dbname=slimphp',
+    'user' => 'slimphpuser',
+    'password' => 'sl1mphpus3r!'
+];
