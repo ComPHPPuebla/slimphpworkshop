@@ -10,6 +10,18 @@
             "summary": "Retrieve the full list of songs.",
             "responseClass": "songsOutput"
         },
+        "getSong": {
+            "httpMethod": "GET",
+            "uri": "songs/{songId}",
+            "summary": "Get a song by it's ID.",
+            "responseClass": "songsOutput",
+            "parameters": {
+                "songId": {
+                    "location": "uri",
+                    "type": "string"
+                }
+            }
+        },
         "saveSong": {
             "httpMethod": "POST",
             "uri": "songs",
@@ -27,6 +39,31 @@
                 "song": {
                     "location": "postFile",
                     "type": "string"
+                }
+            }
+        },
+        "updateSong": {
+            "httpMethod": "PUT",
+            "uri": "songs/{songId}",
+            "summary": "Update the information of a song.",
+            "responseClass": "songsOutput",
+            "parameters": {
+                "songId": {
+                    "location": "uri",
+                    "type": "string"
+                },
+                "name": {
+                    "location": "postField",
+                    "type": "string"
+                },
+                "artist": {
+                    "location": "postField",
+                    "type": "string"
+                },
+                "song": {
+                    "location": "postFile",
+                    "type": "string",
+                    "required": false
                 }
             }
         }

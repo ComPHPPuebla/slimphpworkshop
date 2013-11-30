@@ -52,7 +52,11 @@
                             <a href="#"><?php echo $song['name'] ?></a>
                         </td>
                         <td><?php echo $song['artist'] ?></td>
-                        <td><a href="#">Edit</a></td>
+                        <td>
+                            <a href="<?php echo $app->urlFor('editSong', ['id' => $song['song_id']]) ?>">
+                                Edit
+                            </a>
+                        </td>
                     </tr>
                     <?php endforeach ?>
                 </tbody>
