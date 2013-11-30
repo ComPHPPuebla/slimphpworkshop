@@ -32,6 +32,7 @@ QUERY;
         'song_id' => $songId,
         'name' => $name,
         'artist' => $artist,
+        'file_path' => $path,
     ];
 
     echo json_encode($song, JSON_PRETTY_PRINT);
