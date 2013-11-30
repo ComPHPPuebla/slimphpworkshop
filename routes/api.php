@@ -10,23 +10,29 @@ $app->get('/api/songs', function() use ($app) {
 });
 
 $app->post('/api/songs', function() use ($app) {
-    $body =$app->request()->getBody();
-    parse_str($body, $song);
+    $name = $app->request()->post('name');
+    $artist = $app->request()->post('artist');
+
+    $app->upload->upload();
+    $path = $app->upload->getNameWithExtension();
 
     $sql = <<<QUERY
 INSERT INTO song (name, artist, file_path)
 VALUES (:name, :artist, :file_path)
 QUERY;
     $statement = $app->connection->prepare($sql);
-    $statement->bindParam('name', $song['name']);
-    $statement->bindParam('artist', $song['artist']);
-    $path = '123';
+    $statement->bindParam('name', $name);
+    $statement->bindParam('artist', $artist);
     $statement->bindParam('file_path', $path);
     $statement->execute();
 
     $songId = $app->connection->lastInsertId();
 
-    $song['song_id'] = $songId;
+    $song = [
+        'song_id' => $songId,
+        'name' => $name,
+        'artist' => $artist,
+    ];
 
     echo json_encode($song, JSON_PRETTY_PRINT);
 });
