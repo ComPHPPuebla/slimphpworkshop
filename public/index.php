@@ -8,6 +8,7 @@ $app = new Slim([
     'templates.path' => 'templates',
 ]);
 
+require 'resources/app.php';
 require 'routes/api.php';
 require 'routes/web.php';
 

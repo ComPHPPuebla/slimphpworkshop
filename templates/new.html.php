@@ -31,7 +31,7 @@
             <div class="page-header">
                 <h1>New song</h1>
             </div>
-            <form action="<?php echo $app->urlFor('saveSong') ?>" method="post">
+            <form action="<?php echo $app->urlFor('saveSong') ?>" method="post" enctype="multipart/form-data">
 			  <div class="form-group">
 			    <label for="name">Name</label>
 			    <input type="text" class="form-control" id="name" name="name" placeholder="Enter song name">
@@ -42,7 +42,7 @@
 			  </div>
 			  <div class="form-group">
 			    <label for="song">Song's File</label>
-			    <input type="file" id="song">
+			    <input type="file" id="song" name="song">
 			    <p class="help-block">Only .mp3 files are allowed.</p>
 			  </div>
 			  <button type="submit" class="btn btn-primary">

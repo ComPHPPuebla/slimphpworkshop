@@ -15,8 +15,12 @@ $app->post('/save', function() use ($app) {
     $name = $app->request()->post('name');
     $artist = $app->request()->post('artist');
 
+    $app->upload->upload();
+
+    $fileName = 'uploads/' . $app->upload->getNameWithExtension();
+
     $song = $app->client->saveSong([
-        'name' => $name, 'artist' => $artist
+        'name' => $name, 'artist' => $artist, 'song' => $fileName,
     ]);
 
     $app->redirect($app->urlFor('songsList'));
